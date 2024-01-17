@@ -29,27 +29,22 @@ pub fn two_sum(vec: &Vec<i32>, target: i32)->(usize, usize){
 
 pub mod rd{
 
-    // Remove the duplicates using two pointer 
-    pub fn remove_duplicates(vec: &mut Vec<i32>)->usize{ 
-
-        /* TO-DO : Add sorting to the list 
-                     (sort in non-decreasing order)  */
-        vec.sort(); 
-
-        let mut i = 0 ; 
-
-        /* TO-DO :  j need not be used 
-                            so can be optimised */
-        for mut j in 0..(vec.len() - 1) {
-            if vec[i] == vec[j] { 
-                j+=1; 
-            }else{
-                vec[i+1] = vec[j]; 
-                i+=1; 
-            } 
-
+    pub fn remove_duplicates(vec: &mut Vec<i32>) -> usize {
+        if vec.is_empty() {
+            return 0;
         }
-        i+1
+    
+        vec.sort();
+        let mut i = 0;
+    
+        for j in 1..vec.len() {
+            if vec[i] != vec[j] {
+                i += 1;
+                vec[i] = vec[j];
+            }
+        }
+    
+        i + 1
     }
 
     /* Given an array arr[] of size N. The task 
@@ -62,4 +57,24 @@ pub mod rd{
 
     // }
 
+}
+
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_two_sum() {
+        let nums = vec![2, 7, 11, 15];
+        let target = 9;
+        assert_eq!(two_sum(&nums, target), (0, 1));   
+    }
+    
+    #[test]
+    fn test_remove_duplicates() { 
+        let mut nums = vec![2, 7, 11, 15, 2];
+        let ans = 4; 
+
+        assert_eq!(rd::remove_duplicates(&mut nums), ans); 
+        
+    }
 }
