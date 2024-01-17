@@ -26,3 +26,17 @@ pub fn binary_search(vec: &mut Vec<i32> , target: i32) -> usize {
 
     1000 
 } 
+
+mod test{
+    use super::*;
+    #[test]
+    fn test_binary_test(){
+
+        let mut nums = vec![1,2,4,5,6,7,8,10,22]; 
+        let target = 5; 
+        let ans = 3; 
+
+        assert_eq!(binary_search(&mut nums, target), ans); 
+
+    }
+}
