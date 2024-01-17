@@ -31,8 +31,15 @@ pub mod rd{
 
     // Remove the duplicates using two pointer 
     pub fn remove_duplicates(vec: &mut Vec<i32>)->usize{ 
+
+        /* TO-DO : Add sorting to the list 
+                     (sort in non-decreasing order)  */
+        vec.sort(); 
+
         let mut i = 0 ; 
 
+        /* TO-DO :  j need not be used 
+                            so can be optimised */
         for mut j in 0..(vec.len() - 1) {
             if vec[i] == vec[j] { 
                 j+=1; 
@@ -44,5 +51,15 @@ pub mod rd{
         }
         i+1
     }
+
+    /* Given an array arr[] of size N. The task 
+        is to find the sum of the contiguous subarray
+         within a arr[] with the largest sum.   */
+
+    /* TO-DO : learn and implement kadane algorithm  */
+    
+    // pub fn kadane_algorithm( vec: &Vec<i32>) {
+
+    // }
 
 }
